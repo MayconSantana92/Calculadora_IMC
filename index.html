@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="icon" href="assets/images/favicon.ico" type="image/x-icon">
+
+    <title>Calculadora de IMC</title>
+</head>
+<body>
+    <main id="container">
+        <section id="img">
+            <main id="container">
+                <section id="img">
+                    <img src="assets/images/illustration.svg" alt="Ilustração de cálculo de IMC">
+                </section>
+            
+                <section id="calculator">
+                    <!--Sistema de Load apos clicar em calcular-->
+                    <div id="loading" class="hidden">
+                        <div class="spinner"></div>
+                        <p>Calculando...</p>
+                    </div>
+                    
+                    <form>
+                        <h1 id="title">Calculadora - IMC</h1>
+                        <div class="input-box">
+                            <!--Frame Peso-->
+                            <label for="weight">Peso em Kg</label>
+                            <div class="input-field">
+                                <i class="fa-solid fa-weight-hanging"></i>
+                                <input type="number" id="weight" required min="0" step="0.1" title="Insira seu peso em quilogramas, por exemplo, 70.5">
+                                <span>Kg</span>
+                            </div>
+                        </div>
+                        <div class="input-box">
+                            <!--Frame Altura-->
+                            <label for="height">Altura em metros</label>
+                            <div class="input-field">
+                                <i class="fa-solid fa-ruler"></i>
+                                <input type="text" id="height" placeholder="Exemplo 1,75" required>
+                                <span>m</span>
+                            </div>
+                        </div>
+                        <!--Botao Calcular-->
+                        <button id="calcular" type="button" aria-label="Calcular seu IMC">
+                            Calcular
+                        </button>
+                    </form>
+            
+                    <div id="infos" class="hidden">
+                        <div id="result">
+                            <div id="bmi">
+                                <span id="value"></span>
+                                <span>Seu IMC</span>
+                            </div>
+                            <div id="description">
+                                <span></span>
+                            </div>
+                        </div>
+                        <!--Informacao roda pé-->
+                        <div id="more_info">
+                            <a href="https://www.tuasaude.com/imc/" target="_blank" rel="noopener noreferrer" aria-label="Mais informações sobre IMC">
+                                Mais informações sobre o IMC
+                                <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                            </a>
+                        </div>
+                    </div>
+                </section>
+            </main>
+
+    <!-- Script embutido -->
+    <script>
+        // Lógica para permitir apenas números no campo de peso
+        const weightInput = document.getElementById("weight");
+
+        weightInput.addEventListener("input", function (event) {
+            let inputValue = event.target.value;
+
+            // Remove caracteres que não sejam números ou ponto decimal
+            inputValue = inputValue.replace(/[^0-9.]/g, '');
+
+            // Atualiza o valor do input
+            event.target.value = inputValue;
+        });
+
+        // Lógica para inserir vírgula no campo de altura
+        const heightInput = document.getElementById("height");
+
+        heightInput.addEventListener("input", function (event) {
+            let value = event.target.value;
+
+            // Remove qualquer caractere que não seja número
+            value = value.replace(/[^0-9]/g, "");
+
+            // Insere a vírgula após a primeira casa decimal
+            if (value.length > 1) {
+                value = value.slice(0, 1) + "," + value.slice(1);
+            }
+
+            // Atualiza o valor no campo
+            event.target.value = value;
+        });
+    </script>
+
+    <!-- Script externo -->
+    <script src="assets/js/script.js"></script>
+</body>
+</html>
