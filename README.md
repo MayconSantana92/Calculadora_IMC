@@ -28,11 +28,6 @@
 
 ## 🚀 **Como Usar**
 
-1. Clone este repositório:  
-   ```bash
-   git clone https://github.com/seu-usuario/Calculadora_IMC.git
-   cd Calculadora_IMC
-
 
  <h2>Prévia dos Arquivos</h2>
 
